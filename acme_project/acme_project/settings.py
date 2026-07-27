@@ -90,7 +90,7 @@ STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Задаем форматы вывода и ввода дат
 DATE_FORMAT = 'Y-m-d'
