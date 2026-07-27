@@ -82,10 +82,26 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
 STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+
+# Задаем форматы вывода и ввода дат
+DATE_FORMAT = 'Y-m-d'
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d',  # ISO-формат для HTML5 <input type="date">
+]
+
+# Явно переопределяем локализацию для русского языка
+FORMAT_MODULE_PATH = None
+
+import django.conf.locale.ru.formats as ru_formats
+
+ru_formats.DATE_FORMAT = 'Y-m-d'
+ru_formats.DATE_INPUT_FORMATS = ['%Y-%m-%d']
