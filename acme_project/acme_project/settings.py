@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "birthday.apps.BirthdayConfig",
+    "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
     "django_bootstrap5",
 ]
@@ -90,12 +91,12 @@ STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Задаем форматы вывода и ввода дат
-DATE_FORMAT = 'Y-m-d'
+DATE_FORMAT = "Y-m-d"
 DATE_INPUT_FORMATS = [
-    '%Y-%m-%d',  # ISO-формат для HTML5 <input type="date">
+    "%Y-%m-%d",  # ISO-формат для HTML5 <input type="date">
 ]
 
 # Явно переопределяем локализацию для русского языка
@@ -103,5 +104,13 @@ FORMAT_MODULE_PATH = None
 
 import django.conf.locale.ru.formats as ru_formats
 
-ru_formats.DATE_FORMAT = 'Y-m-d'
-ru_formats.DATE_INPUT_FORMATS = ['%Y-%m-%d']
+ru_formats.DATE_FORMAT = "Y-m-d"
+ru_formats.DATE_INPUT_FORMATS = ["%Y-%m-%d"]
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# Указываем директорию, в которую будут сохраняться файлы писем:
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+
+LOGIN_REDIRECT_URL = "pages:homepage"
+
+LOGIN_URL = "login"
